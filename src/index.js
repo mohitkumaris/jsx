@@ -1,17 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// Import react and react dom libraries
+import React from "react";
+import ReactDom from "react-dom";
+// For real time reloading
+if (module.hot) {
+  module.hot.accept();
+}
+function getButtonText() {
+  return "Click me !";
+}
+function getCurrentTime() {
+  return new Date().toLocaleDateString();
+}
+// Create a react component
+const App = () => {
+  return (
+    <div>
+      <label className="label" htmlFor="name">
+        Enter Name{" "}
+      </label>
+      <input id="name" type="text" />
+      <button style={{ backgroundColor: "blue", color: "white" }}>
+        {getButtonText()}
+      </button>
+      <hr />
+      <h3>Current Time</h3>
+      <label>{getCurrentTime()}</label>
+    </div>
+  );
+};
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Take the component and show it on DOM
+ReactDom.render(<App />, document.querySelector("#root"));
